@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opinie Booksy - Landing Page</title>
+  <!-- Czcionka z Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" 
+    rel="stylesheet"
+  >
+  <style>
+    /* RESET I BAZOWE STYLOWANIE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      background-color: #fff; /* jasne tło, w stylu blogowym */
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 2.4rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* KOLORY - MOŻESZ DOSTOSOWAĆ DO SWOJEJ PALETY */
+    :root {
+      --primary-color: #0a3b75;     /* Niebieski/Granat jako główny kolor */
+      --accent-color: #007bff;      /* Akcent niebieski */
+      --light-gray: #f9f9f9;        /* Jasnoszare tło sekcji */
+      --dark-text: #333;
+      --light-text: #fff;
+      --highlight-color: #ffcc00;   /* (opcjonalnie) kolor przycisków wyróżnionych */
+    }
+
+    /* KONTENER NA TREŚĆ: maksymalna szerokość, wyśrodkowanie */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem; 
+    }
+
+    /* GÓRNY NAGŁÓWEK Z NAWIGACJĄ */
+    header {
+      width: 100%;
+      background-color: var(--light-gray);
+      border-bottom: 1px solid #ddd;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: var(--primary-color);
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu a {
+      color: var(--dark-text);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .menu a:hover {
+      color: var(--accent-color);
+    }
+
+    /* SEKCJA HERO */
+    .hero {
+      background-color: #eef4fb;
+      padding: 3rem 1rem 4rem 1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0.5rem auto 2rem auto;
+      line-height: 1.6;
+    }
+    .hero .cta-btn {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .hero .cta-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* PODSTAWOWE SEKCJE */
+    section {
+      margin-bottom: 2rem;
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    /* DROBNE STYLOWANIE LISTY (DLACZEGO MY) */
+    .why-us-list {
+      list-style: inside disc;
+      margin: 1rem 0;
+      line-height: 1.6;
+      padding-left: 1rem;
+    }
+
+    /* - - - - - - - - - - -  CENNIK  - - - - - - - - - - - */
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .pricing-card {
+      flex: 1 1 300px;
+      max-width: 350px;
+      background-color: var(--light-gray);
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .pricing-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .price {
+      font-size: 2rem;
+      color: var(--accent-color);
+      margin: 1rem 0;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      margin: 1rem 0;
+      padding: 0;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .pricing-card button {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .pricing-card button:hover {
+      background-color: #0056b3;
+    }
+
+    /* EFEKTY (GALERIA PRZED/PO) */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .efekt-box {
+      flex: 1 1 250px;
+      max-width: 300px;
+    }
+    .efekt-caption {
+      margin-top: 0.5rem;
+      text-align: center;
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+
+    /* SKUTECZNOŚĆ (STATYSTYKI) */
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .stat-box {
+      flex: 1 1 200px;
+      max-width: 250px;
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid #ddd;
+      background-color: var(--light-gray);
+      border-radius: 4px;
+    }
+    .stat-box h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+
+    /* OPINIE */
+    .opinie-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .opinia {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .opinia p {
+      font-style: italic;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+    .opinia .author {
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    /* PARTNERZY */
+    .partners-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .partners-logos img {
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
+    }
+
+    /* CASE STUDIES */
+    .case-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+    .case-box {
+      flex: 1 1 250px;
+      max-width: 300px;
+      background-color: var(--light-gray);
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .case-box h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.25rem;
+    }
+    .faq-item p {
+      margin-left: 1rem;
+    }
+
+    /* FORMULARZ KONTAKTOWY */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      max-width: 600px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
+    .contact-form button:hover {
+      background-color: #0056b3;
+    }
+
+    /* STOPKA */
+    footer {
+      background-color: var(--light-gray);
+      border-top: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--dark-text);
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .hero {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .pricing-cards,
+      .gallery,
+      .stats-container,
+      .case-container {
+        flex-direction: column;
+      }
+
+      .pricing-card,
+      .stat-box,
+      .case-box {
+        max-width: 100%;
+      }
+
+      .opinie-container {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAGŁÓWEK Z NAWIGACJĄ -->
+<header>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo">BooksyOpinie</a>
+      <div class="menu">
+        <a href="#o-nas">O nas</a>
+        <a href="#dlaczego">Dlaczego My</a>
+        <a href="#jak-to-dziala">Jak to działa</a>
+        <a href="#partnerzy">Partnerzy</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#efekty">Efekty</a>
+        <a href="#skutecznosc">Skuteczność</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- SEKCJA HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Profesjonalne Opinie na Booksy</h1>
+    <p>
+      Zwiększ swoją renomę i przyciągnij nowych klientów! 
+      Nasz zespół specjalizuje się w generowaniu sprawdzonych i skutecznych opinii w serwisie Booksy.
+    </p>
+    <a href="#cennik" class="cta-btn">Sprawdź Cennik</a>
+  </div>
+</section>
+
+<!-- SEKCJA O NAS -->
+<section id="o-nas">
+  <div class="container">
+    <h2>Kim jesteśmy?</h2>
+    <p>
+      Jesteśmy zespołem profesjonalistów, którzy pomogą Ci wybić się na Booksy 
+      dzięki rzetelnym, pozytywnym opiniom. Zwiększamy wiarygodność Twojego profilu 
+      i pomagamy dotrzeć do szerszego grona klientów.
+    </p>
+  </div>
+</section>
+
+<!-- DLACZEGO MY -->
+<section id="dlaczego">
+  <div class="container">
+    <h2>Dlaczego My?</h2>
+    <ul class="why-us-list">
+      <li>Wieloletnie doświadczenie w marketingu opinii</li>
+      <li>Ręcznie pisane komentarze, dopasowane do branży</li>
+      <li>Najwyższa skuteczność i zaufanie wielu firm</li>
+      <li>Stały monitoring i raportowanie</li>
+      <li>Indywidualne podejście do każdego klienta</li>
+    </ul>
+  </div>
+</section>
+
+<!-- JAK TO DZIAŁA -->
+<section id="jak-to-dziala" style="background-color: var(--light-gray);">
+  <div class="container">
+    <h2>Jak to działa?</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Krok 1: Analiza profilu</h3>
+        <p>Sprawdzamy Twój obecny profil w Booksy, aby zrozumieć Twoje potrzeby.</p>
+      </div>
+      <div class="step">
+        <h3>Krok 2: Strategia opinii</h3>
+        <p>Przygotowujemy plan dodawania komentarzy, ustalamy liczbę i częstotliwość.</p>
+      </div>
+      <div class="step">
+        <h3>Krok 3: Realizacja</h3>
+        <p>Rozpoczynamy dodawanie opinii według ustalonego harmonogramu.</p>
+      </div>
+      <div class="step">
+        <h3>Krok 4: Monitorowanie efektów</h3>
+        <p>Kontrolujemy wyniki i wprowadzamy ewentualne poprawki.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERZY -->
+<section id="partnerzy">
+  <div class="container">
+    <h2>Nasi Partnerzy</h2>
+    <p>Współpracujemy z wieloma firmami i ekspertami branżowymi, aby zapewnić Ci kompleksowe wsparcie.</p>
+    <div class="partners-logos">
+      <img src="https://via.placeholder.com/100x50?text=Logo+1" alt="Partner Logo 1">
+      <img src="https://via.placeholder.com/100x50?text=Logo+2" alt="Partner Logo 2">
+      <img src="https://via.placeholder.com/100x50?text=Logo+3" alt="Partner Logo 3">
+      <img src="https://via.placeholder.com/100x50?text=Logo+4" alt="Partner Logo 4">
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies" style="background-color: var(--light-gray);">
+  <div class="container">
+    <h2>Case Studies</h2>
+    <p>Sprawdź, jak pomogliśmy innym firmom zwiększyć swoją widoczność i zaufanie w Booksy.</p>
+    <div class="case-container">
+      <div class="case-box">
+        <h3>Salon Kosmetyczny Glam</h3>
+        <p>Wzrost liczby opinii o 200% w ciągu 3 miesięcy, co przełożyło się na 50% więcej rezerwacji.</p>
+      </div>
+      <div class="case-box">
+        <h3>Barber Shop ProCut</h3>
+        <p>Zwiększenie średniej oceny z 4.2 na 4.8 oraz widoczna poprawa ruchu po 2 miesiącach współpracy.</p>
+      </div>
+      <div class="case-box">
+        <h3>Studio Paznokci ArtNails</h3>
+        <p>Skuteczna kampania opinii w kluczowym sezonie wiosennym – 30% wzrost dochodów.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <h3>Czy opinie są pisane przez prawdziwe osoby?</h3>
+      <p>Tak, wszystkie nasze opinie są przygotowywane ręcznie i dopasowane do charakteru Twojej działalności.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Jak szybko zobaczę efekty?</h3>
+      <p>Pierwsze wzrosty widoczności w Booksy widać zwykle już po 2-3 tygodniach, jednak pełne efekty mogą zająć do 2 miesięcy.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Czy mogę zmodyfikować liczbę opinii w pakiecie?</h3>
+      <p>Oczywiście! Możemy dostosować ofertę do Twoich indywidualnych potrzeb.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" style="background-color: var(--light-gray);">
+  <div class="container">
+    <h2>Skontaktuj się z nami</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Imię i nazwisko" required>
+      <input type="email" placeholder="Adres email" required>
+      <textarea rows="5" placeholder="Twoja wiadomość"></textarea>
+      <button type="submit">Wyślij</button>
+    </form>
+  </div>
+</section>
+
+<!-- CENNIK -->
+<section id="cennik">
+  <div class="container">
+    <h2>Nasz Cennik</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Pakiet Start</h3>
+        <p class="price">99 zł</p>
+        <ul>
+          <li>10 opinii w ciągu miesiąca</li>
+          <li>Ręcznie pisane komentarze</li>
+          <li>Monitorowanie efektów</li>
+        </ul>
+        <button>Zamów</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Pakiet Pro</h3>
+        <p class="price">199 zł</p>
+        <ul>
+          <li>25 opinii w ciągu miesiąca</li>
+          <li>Ręcznie pisane komentarze</li>
+          <li>Monitorowanie i raporty</li>
+          <li>Wsparcie mailowe</li>
+        </ul>
+        <button>Zamów</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Pakiet Premium</h3>
+        <p class="price">299 zł</p>
+        <ul>
+          <li>50 opinii w ciągu miesiąca</li>
+          <li>Ręcznie pisane komentarze</li>
+          <li>Pełne raporty i analizy</li>
+          <li>Priorytetowe wsparcie</li>
+        </ul>
+        <button>Zamów</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EFEKTY (PRZED/PO) -->
+<section id="efekty" style="background-color: var(--light-gray);">
+  <div class="container">
+    <h2>Efekty: Przed i Po</h2>
+    <div class="gallery">
+      <div class="efekt-box">
+        <img src="https://via.placeholder.com/300x200?text=Przed" alt="Efekt przed">
+        <div class="efekt-caption">Przed</div>
+      </div>
+      <div class="efekt-box">
+        <img src="https://via.placeholder.com/300x200?text=Po" alt="Efekt po">
+        <div class="efekt-caption">Po</div>
+      </div>
+      <div class="efekt-box">
+        <img src="https://via.placeholder.com/300x200?text=Przed" alt="Efekt przed">
+        <div class="efekt-caption">Przed</div>
+      </div>
+      <div class="efekt-box">
+        <img src="https://via.placeholder.com/300x200?text=Po" alt="Efekt po">
+        <div class="efekt-caption">Po</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKUTECZNOŚĆ -->
+<section id="skutecznosc">
+  <div class="container">
+    <h2>Nasza Skuteczność</h2>
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3>+95%</h3>
+        <p>Zadowolonych klientów</p>
+      </div>
+      <div class="stat-box">
+        <h3>+300</h3>
+        <p>Wystawionych opinii miesięcznie</p>
+      </div>
+      <div class="stat-box">
+        <h3>+80%</h3>
+        <p>Więcej rezerwacji przez Booksy</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIE -->
+<section id="opinie" style="background-color: var(--light-gray);">
+  <div class="container">
+    <h2>Opinie Klientów</h2>
+    <div class="opinie-container">
+      <div class="opinia">
+        <p>“Dzięki współpracy z tym zespołem moje konto na Booksy 
+          w końcu zaczęło przyciągać prawdziwe tłumy! Niesamowity efekt.”</p>
+        <div class="author">– Anna K.</div>
+      </div>
+      <div class="opinia">
+        <p>“Polecam każdemu, kto chce zwiększyć wiarygodność w sieci. 
+          Opinie wystawione zgodnie z obietnicą, a efekty przerosły moje oczekiwania.”</p>
+        <div class="author">– Paweł W.</div>
+      </div>
+      <div class="opinia">
+        <p>“Pełen profesjonalizm. Kontakt, raporty i przede wszystkim wzrost liczby rezerwacji. 
+          Warto było zainwestować!”</p>
+        <div class="author">– Marta R.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STOPKA -->
+<footer>
+  &copy; 2025 BooksyOpinie. Wszelkie prawa zastrzeżone.
+</footer>
+
+</body>
+</html>
